@@ -1,0 +1,14 @@
+<div class="inputs" [formGroup]="forms">
+  <input formControlName="input1" type="text" />
+  <input formControlName="input2" type="text" />
+  <input formControlName="input3" type="text" />
+  <button (click)="fetchData()">Click</button>
+</div>
+
+<p *ngIf="errorHandler$ | async">Please provide valid name</p>
+<p *ngIf="minutes$ | async as minutes">
+  Total runtime is {{ minutes }} minutes
+</p>
+<p *ngIf="population$ | async as population">
+  Population of all countries is {{ population }}
+</p>

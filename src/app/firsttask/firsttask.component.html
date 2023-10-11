@@ -1,0 +1,24 @@
+<input type="text" [formControl]="moviename" />
+<button (click)="sendRequest()">Click</button>
+
+<ng-container *ngIf="actors$ | async as actors">
+  <p>Actors: {{ actors | namesPipe }}</p>
+</ng-container>
+<ng-container *ngIf="releaseDate$ | async as date">
+  <p>Released {{ date | dateCalc }} years ago</p>
+</ng-container>
+
+<ng-container *ngIf="countryAndFlag | async as countriesandflags">
+  <ng-container *ngFor="let country of countriesandflags">
+    <div class="content">
+      <img [src]="country.flag" alt="" />
+      <p *ngFor="let currency of country.currencies">
+        Currency: {{ currency.name }}
+      </p>
+    </div>
+  </ng-container>
+</ng-container>
+
+<p *ngIf="errorHandler | async as error">
+  {{ error }}
+</p>
